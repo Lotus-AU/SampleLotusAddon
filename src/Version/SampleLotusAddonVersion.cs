@@ -1,5 +1,4 @@
 using Hazel;
-using VentLib.Version;
 
 namespace SampleRoleAddon.Version;
 

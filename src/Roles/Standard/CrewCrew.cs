@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Lotus.Extensions;
 using Lotus.GUI;
 using Lotus.GUI.Name;
 using Lotus.Roles;
@@ -12,13 +11,10 @@ using Lotus.Roles.Internals.Enums;
 using VentLib.Localization.Attributes;
 using VentLib.Options.UI;
 using Lotus.API.Odyssey;
-using Lotus.Logging;
 using Lotus.Chat;
-using Lotus.GUI.Name.Impl;
 using System;
-using System.Reflection;
 
-namespace SampleRoleAddon.Roles;
+namespace SampleRoleAddon.Roles.Standard;
 
 // The "Crew Crew" is a Crewmate role that does something.
 // If "Crew Crew" successfully reports enough players (determined by host) they win the game! It's that simple

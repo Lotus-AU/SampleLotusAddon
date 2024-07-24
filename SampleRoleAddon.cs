@@ -1,9 +1,12 @@
-using SampleRoleAddon.Roles;
 using Lotus.Addons;
 using Lotus.GameModes.Standard;
 using SampleRoleAddon.Version;
 using Lotus.Roles;
 using System.Collections.Generic;
+using SampleRoleAddon.Roles.Standard;
+using SampleRoleAddon.Gamemodes.BombTag;
+using SampleRoleAddon.Gamemodes.BombTag.Options;
+using Lotus.GameModes;
 
 namespace SampleRoleAddon;
 
@@ -20,6 +23,10 @@ public class SampleRoleAddon: LotusAddon
 
         // Add your role to the gamemmode of your choice (Standard in this case.)
         allRoles.ForEach(StandardRoles.AddRole);
+        
+        // Export gamemode
+        ExportGameModes(new List<IGameMode>() { new BombTagGamemode() });
+        _ = new BombTagOptionHolder();
     }
 
     public override string Name { get;} = "Sample Role Addon";
