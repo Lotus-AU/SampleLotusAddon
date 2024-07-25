@@ -56,5 +56,6 @@ public class HasNoBomb: NeutralKillingBase
         .DesyncRole(RoleTypes.Impostor)
         .RoleFlags(RoleFlag.DontRegisterOptions | RoleFlag.CannotWinAlone)
         .RoleAbilityFlags(RoleAbilityFlag.CannotVent | RoleAbilityFlag.CannotSabotage)
-        .RoleColor(Color.gray);
+        .RoleColor(Color.gray)
+        .IntroSound(RoleTypes.Crewmate);
 }

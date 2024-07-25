@@ -75,6 +75,8 @@ public class BombTagGamemode: GameMode
         // Assign Seekers
         while (seekersLeft > 0)
         {
+            if (unassignedPlayers.Count == 0) break; // prevent error by breaking if we have zero players
+
             // Gets a random element from a list and removes it from the list.
             PlayerControl seeker = unassignedPlayers.PopRandom();
             seekersLeft -= 1;
@@ -89,7 +91,7 @@ public class BombTagGamemode: GameMode
         }
         if (ProjectLotus.AdvancedRoleAssignment) Players.GetAllPlayers().Sorted(p => p.IsHost() ? 0 : 1).ForEach(p => p.RpcSetRole(AmongUs.GameOptions.RoleTypes.Crewmate, true));
         else Players.GetAllPlayers().Sorted(p => p.IsHost() ? 0 : 1).ForEach(p => p.PrimaryRole().Assign());
-        base.AssignRoles(players);
+        base.AssignRoles(players); // let base finish everything.
     }
 
     // Add win cons to the WinDelegate. With no win cons, the game would never end.

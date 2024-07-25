@@ -52,6 +52,7 @@ public class CrewCrew: Crewmate // There are a couple built-in role types you ca
     [RoleAction(LotusActionType.RoundStart)]
     public void ActiveGameWin()
     {
+        reportBodyCooldown.Start();
         if (CheckWinCondition()) ManualWin.Activate(MyPlayer, ReasonType.SoloWinner, 999);
     }
 

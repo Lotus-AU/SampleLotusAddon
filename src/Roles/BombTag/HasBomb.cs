@@ -20,6 +20,7 @@ using System.Collections.Generic;
 using Lotus.API.Player;
 using System.Linq;
 using VentLib.Utilities.Extensions;
+using VentLib.Logging;
 
 namespace SampleRoleAddon.Roles.BombTag;
 
@@ -79,6 +80,8 @@ public class HasBomb: NeutralKillingBase
 
         // Give the player the role and we are done.
         BombTagGamemode.Instance.Assign(target, BombTagRoles.Instance.Static.HasBomb);
+
+        // Update durations
         float TimeRemaining = bombDuration.TimeRemaining();
         role.bombDuration.Start(TimeRemaining);
         role.hasStarted = true;
@@ -98,22 +101,28 @@ public class HasBomb: NeutralKillingBase
     {
         if (!hasStarted | bombDuration.NotReady()) return;
         bombDuration.Start(BombTagOptionHolder.BombDuration);
+        StaticLogger.Debug($"Suiciding for {MyPlayer.name}"); // log to console
 
         // We suicide by using a FatalIntent. A fatal intent actually kills the player.
-        // An unblocked Interaction ensures that it actually kills the player if it gets canceled somehow.
+        // An UnblockedInteraction ensures that it actually kills the player if it gets canceled somehow.
         MyPlayer.InteractWith(MyPlayer, new UnblockedInteraction(new FatalIntent(), this));
 
         // Now we have to assign a new player.
         List<PlayerControl> potentialTargets = Players.GetAlivePlayers().Where(p => p.PrimaryRole() is not HasBomb).ToList();
-        if (potentialTargets.Count() == 0) return;
+        if (potentialTargets.Count <= 1) return;
         // Assign a new bomber since we died.
         // Pretty unlucky to whoever gets assigned this role because we couldn't get someone.
-        BombTagGamemode.Instance.Assign(potentialTargets.GetRandom(), BombTagRoles.Instance.Static.HasBomb);
+        PlayerControl target = potentialTargets.GetRandom();
+        StaticLogger.Debug($"Passing bomb to {target.name}"); 
+        BombTagGamemode.Instance.Assign(target, BombTagRoles.Instance.Static.HasBomb);
     }
 
-    protected override RoleModifier Modify(RoleModifier roleModifier) => base.Modify(roleModifier)
-        .DesyncRole(RoleTypes.Impostor)
-        .RoleFlags(RoleFlag.DontRegisterOptions | RoleFlag.CannotWinAlone)
-        .RoleAbilityFlags(RoleAbilityFlag.CannotVent | RoleAbilityFlag.CannotSabotage | RoleAbilityFlag.IsAbleToKill)
-        .RoleColor(Color.green);
+    protected override RoleModifier Modify(RoleModifier roleModifier) => 
+        base.Modify(roleModifier)
+            .DesyncRole(RoleTypes.Impostor)
+            .RoleFlags(RoleFlag.DontRegisterOptions | RoleFlag.CannotWinAlone)
+            .RoleAbilityFlags(RoleAbilityFlag.CannotSabotage | RoleAbilityFlag.IsAbleToKill)
+            .RoleColor(Color.green)
+            .IntroSound(RoleTypes.Shapeshifter)
+            .CanVent(BombTagOptionHolder.BombedPlayersCanVent); // you might think this will always be the option that is set when we start the game, but. this function runs AGAIN when the role is assigned
 }

@@ -10,9 +10,10 @@ namespace SampleRoleAddon.Gamemodes.BombTag.Options;
 public class BombTagOptionHolder
 {
     public static bool ShowBombedPlayersToAll = true;
-    public static float BombCooldown = 2.5f;
+    public static bool BombedPlayersCanVent = false;
     public static float BombDuration = 30f;
     public static bool CanTakeback = false;
+    public static float BombCooldown = 0f;
     public static int BombCount = 1;
     public static float Delay = -1;
     public BombTagOptionHolder()
@@ -21,7 +22,7 @@ public class BombTagOptionHolder
 
         // Create a new title (divider) with our specified text
         optionsTab.AddOption(new GameOptionTitleBuilder()
-            .Title("Bomb Tag Options")
+            .Title("Bomb Tag Settings")
             .Color(Color.green)
             .Build());
 
@@ -62,6 +63,12 @@ public class BombTagOptionHolder
             .KeyName("Show Bombed Players to All", "Show Bombed Players to All")
             .AddBoolean()
             .BindBool(v => ShowBombedPlayersToAll = v)
+            .Build());
+
+        optionsTab.AddOption(new GameOptionBuilder()
+            .KeyName("Bombed Players Can Vent", "Bombed Players Can Vent")
+            .AddBoolean()
+            .BindBool(v => BombedPlayersCanVent = v)
             .Build());
     }
 }

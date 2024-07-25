@@ -15,23 +15,22 @@ public class SampleRoleAddon: LotusAddon
     public override void Initialize()
     {
         // Create instances first
-        CustomRole crewCrew = new CrewCrew();
-        List<CustomRole> allRoles = new List<CustomRole>() { crewCrew };
-
-        // Register roles second
-        ExportCustomRoles(allRoles, typeof(StandardGameMode));
+        List<CustomRole> allRoles = new List<CustomRole>() { new CrewCrew() };
 
         // Add your role to the gamemmode of your choice (Standard in this case.)
         allRoles.ForEach(StandardRoles.AddRole);
+
+        // Register roles
+        ExportCustomRoles(allRoles, typeof(StandardGameMode));
         
         // Export gamemode
         ExportGameModes(new List<IGameMode>() { new BombTagGamemode() });
         _ = new BombTagOptionHolder();
     }
 
-    public override string Name { get;} = "Sample Role Addon";
+    public override string Name { get; } = "Sample Role Addon";
 
-    public override VentLib.Version.Version Version { get;} = new SampleLotusAddonVersion();
+    public override VentLib.Version.Version Version { get; } = new SampleLotusAddonVersion();
 }
 
 
