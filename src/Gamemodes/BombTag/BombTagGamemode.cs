@@ -29,7 +29,7 @@ public class BombTagGamemode: GameMode
     public override string Name { get; set; } = "Bomb Tag";
     public override BombTagRoleOperations RoleOperations { get; }
     public override BombTagRoleManager RoleManager { get; }
-    public new MatchData MatchData { get; private set; }
+    public override MatchData MatchData { get; set; }
 
     public BombTagGamemode(): base()
     {
@@ -119,6 +119,7 @@ public class BombTagGamemode: GameMode
             .SelectMany(p => p.NameModel().ComponentHolders())
             .ForEach(holders =>
                 {
+                    // only show roles to other players. remove the if statement to show cooldown's and other infos to every player.
                     if (holders is RoleComponent)
                     {
                         holders.AddListener(component => component.AddViewer(player));
