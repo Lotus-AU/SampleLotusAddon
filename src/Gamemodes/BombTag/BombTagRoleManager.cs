@@ -21,13 +21,13 @@ public class BombTagRoleManager: Lotus.Roles.Managers.RoleManager
 
     protected OrderedDictionary<string, CustomRole> OrderedCustomRoles { get; } = new();
     public override CustomRole FallbackRole() => EmptyRole.Instance;
-    public new BombTagRoles RoleHolder { get; }
+    public override BombTagRoles RoleHolder { get; }
     internal virtual bool IsGlobal => false;
     public override IEnumerable<CustomRole> AllCustomRoles() => OrderedCustomRoles.GetValues();
 
     public BombTagRoleManager()
     {
-        RoleHolder = new(this);
+        RoleHolder = new();
         RoleHolder.AllRoles.ForEach(RegisterRole);
         Async.Schedule(() =>
         {

@@ -9,9 +9,11 @@ namespace SampleRoleAddon.Gamemodes.BombTag.WinCons;
 
 public class BombTagWinCondition: IWinCondition
 {
-    public WinReason SoloWin = new(ReasonType.SoloWinner, "They were the last person standing with a bomb.");
-    public WinReason BombWin = new(ReasonType.GameModeSpecificWin, "All alive players had bombs.");
-    public WinReason currentWinCon;
+    private readonly WinReason soloWin = new(ReasonType.SoloWinner, "They were the last person standing with a bomb.");
+    private readonly WinReason bombWin = new(ReasonType.GameModeSpecificWin, "All alive players had bombs.");
+    
+    private WinReason currentWinCon;
+    
     public bool IsConditionMet(out List<PlayerControl> winners)
     {
         bool singleAlivePlayer = Players.GetAlivePlayers().Count() == 1;
@@ -19,11 +21,11 @@ public class BombTagWinCondition: IWinCondition
         
         if (singleAlivePlayer) {
             winners = Players.GetAlivePlayers().ToList();
-            currentWinCon = SoloWin;
+            currentWinCon = soloWin;
             return true;
         } else if (allAlivePlayersAreBombs) {
             winners = Players.GetAlivePlayers().ToList();
-            currentWinCon = BombWin;
+            currentWinCon = bombWin;
             return true;
         } else {
             winners = null;

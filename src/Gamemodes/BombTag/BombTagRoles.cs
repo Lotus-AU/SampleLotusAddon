@@ -17,15 +17,13 @@ public class BombTagRoles: RoleHolder
     public override List<Action> FinishedCallbacks() => Callbacks;
     public static List<Action> Callbacks { get; set; } = new List<Action>();
     
-    public StaticRoles Static;
+    public readonly StaticRoles Static;
     
-    private static BombTagRoleManager roleManager = null!;
     public static BombTagRoles Instance = null!;
 
-    public BombTagRoles(Lotus.Roles.Managers.RoleManager manager) : base(manager)
+    public BombTagRoles()
     {
         Instance = this;
-        roleManager = manager as BombTagRoleManager;
 
         MainRoles = new List<CustomRole>();
         AllRoles = new List<CustomRole>();
@@ -44,7 +42,7 @@ public class BombTagRoles: RoleHolder
 
     public class StaticRoles
     {
-        public HasBomb HasBomb = new();
-        public HasNoBomb HasNoBomb = new();
+        public readonly HasBomb HasBomb = new();
+        public readonly HasNoBomb HasNoBomb = new();
     }   
 }

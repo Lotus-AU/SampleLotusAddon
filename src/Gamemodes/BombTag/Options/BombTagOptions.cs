@@ -46,7 +46,7 @@ public class BombTagOptionHolder
             .AddFloatRange(2.5f, 60f, 2.5f, 0, "s")
             .BindFloat(v => BombCooldown = v)
             .ShowSubOptionPredicate(v => (float)v == 0f)
-            .SubOption(sub => sub.KeyName("Takebacks", "Can Players Pass the Bomb back to who gave it")
+            .SubOption(sub => sub.KeyName("Takebacks", "Can Players Return the Bomb")
                 .AddBoolean(false)
                 .BindBool(v => CanTakeback = v)
                 .Build())

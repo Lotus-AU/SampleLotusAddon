@@ -13,6 +13,8 @@ using VentLib.Options.UI;
 using Lotus.API.Odyssey;
 using Lotus.Chat;
 using System;
+using Lotus.Roles.Internals;
+using VentLib.Utilities.Optionals;
 
 namespace SampleRoleAddon.Roles.Standard;
 
@@ -40,13 +42,16 @@ public class CrewCrew: Crewmate // There are a couple built-in role types you ca
     private string ReportedPlayerCounter() => RoleUtils.Counter(grabbedPlayers.Count, reportedPlayersBeforeWin);
 
     [RoleAction(LotusActionType.ReportBody)]
-    public void ReportAbility(NetworkedPlayerInfo reportedBody)
+    public void ReportAbility(Optional<NetworkedPlayerInfo> reportedBody, ActionHandle handler)
     {
-        if (reportBodyCooldown.NotReady()) return;
+        if (reportBodyCooldown.NotReady() || !reportedBody.Exists()) return;
+        handler.Cancel();
         reportBodyCooldown.Start();
+
+        NetworkedPlayerInfo player = reportedBody.Get();
         
-        grabbedPlayers.Add(reportedBody.PlayerId);
-        if (makesBodiesUnreportable) Game.MatchData.UnreportableBodies.Add(reportedBody.PlayerId);
+        grabbedPlayers.Add(player.PlayerId);
+        if (makesBodiesUnreportable) Game.MatchData.UnreportableBodies.Add(player.PlayerId);
     }
 
     [RoleAction(LotusActionType.RoundStart)]
@@ -67,12 +72,11 @@ public class CrewCrew: Crewmate // There are a couple built-in role types you ca
             .Send();
     }
 
-    // To Add a role image you want to override GetRoleImage. Add your png and use the AssetLoader that comes with ProjectLotus.
-    protected override Func<Sprite> GetRoleImage()
-    {
-        // Depending on your image size, you may have to change 500 to another number. If it is too big or too small keep changing it until it looks good for you.
-        return () => AssetLoader.LoadSprite("SampleRoleAddon.assets.crewcrew.png", 500, true);
-    }
+    // You can edit what the Role Image will display.
+    // By default, it will be blank.
+    // You can either have a RoleImage (PNG File) or a Role Outfit (YAML File).
+    // Check Lotus github to see how outfits work.
+    protected override string ForceRoleImageDirectory() => "SampleRoleAddon.assets.crewcrew.png";
 
     private bool CheckWinCondition() => grabbedPlayers.Count >= reportedPlayersBeforeWin;
 
@@ -89,7 +93,7 @@ public class CrewCrew: Crewmate // There are a couple built-in role types you ca
                 .BindFloat(reportBodyCooldown.SetDuration)
                 .Build())
             .SubOption(sub => sub.Name("Make Body Unreportable")
-                // .AddOnOffValues() I recommend using AddBoolean which is a checkmark. But AddOnOffValues is still here for decaprecation.
+                // .AddOnOffValues() I recommend using AddBoolean which is a checkmark. But AddOnOffValues is still here for deprecation.
                 .AddBoolean()
                 .BindBool(b => makesBodiesUnreportable = b)
                 .Build())

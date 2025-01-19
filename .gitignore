@@ -4,3 +4,5 @@ bin/
 /.vs/
 FodyWeavers.xml
 FodyWeavers.xsd
+.idea/
+SampleRoleAddon.sln.DotSettings.user
