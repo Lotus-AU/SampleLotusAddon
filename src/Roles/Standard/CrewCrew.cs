@@ -44,7 +44,12 @@ public class CrewCrew: Crewmate // There are a couple built-in role types you ca
     [RoleAction(LotusActionType.ReportBody)]
     public void ReportAbility(Optional<NetworkedPlayerInfo> reportedBody, ActionHandle handler)
     {
-        if (reportBodyCooldown.NotReady() || !reportedBody.Exists()) return;
+        if (reportedBody.Exists())
+        {
+            if (grabbedPlayers.Contains(reportedBody.Get().PlayerId)) return;
+        }
+        else return;
+        if (reportBodyCooldown.NotReady()) return;
         handler.Cancel();
         reportBodyCooldown.Start();
 
