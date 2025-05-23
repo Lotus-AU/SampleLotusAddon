@@ -46,7 +46,11 @@ public class CrewCrew: Crewmate // There are a couple built-in role types you ca
     {
         if (reportedBody.Exists())
         {
-            if (grabbedPlayers.Contains(reportedBody.Get().PlayerId)) return;
+            if (grabbedPlayers.Contains(reportedBody.Get().PlayerId))
+            {
+                handler.Cancel();
+                return;
+            }
         }
         else return;
         if (reportBodyCooldown.NotReady()) return;
