@@ -26,6 +26,7 @@ public class BombTagGamemode: GameMode
     public static BombTagGamemode Instance;
 
     public override string Name { get; set; } = "Bomb Tag";
+    public override string Description { get; set; } = "Bomb Holder: Use Kill button to pass bomb before you explode. Use vents to suprise the other players.\nSurvivors (No Bomb): Evade the bomb holders and don't get the bomb at all costs!";
     public override BombTagRoleOperations RoleOperations { get; }
     public override BombTagRoleManager RoleManager { get; }
     public override MatchData MatchData { get; set; }
