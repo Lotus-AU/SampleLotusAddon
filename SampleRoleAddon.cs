@@ -1,5 +1,5 @@
 using Lotus.Addons;
-using Lotus.GameModes.Standard;
+using Lotus.GameModes.Normal.Standard;
 using SampleRoleAddon.Version;
 using Lotus.Roles;
 using System.Collections.Generic;
@@ -17,11 +17,8 @@ public class SampleRoleAddon: LotusAddon
         // Create instances first
         List<CustomRole> allRoles = new List<CustomRole>() { new CrewCrew() };
 
-        // Add your role to the gamemmode of your choice (Standard in this case.)
-        allRoles.ForEach(StandardRoles.AddRole);
-
         // Register roles
-        ExportCustomRoles(allRoles, typeof(StandardGameMode));
+        ExportCustomRoles(allRoles, typeof(NormalStandardGameMode));
         
         // Export gamemode
         ExportGameModes(new List<IGameMode>() { new BombTagGamemode() });

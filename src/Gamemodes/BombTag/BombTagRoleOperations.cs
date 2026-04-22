@@ -1,5 +1,5 @@
 using Lotus.GameModes;
-using Lotus.GameModes.Standard;
+using Lotus.GameModes.Normal.Standard;
 
 namespace SampleRoleAddon.Gamemodes.BombTag;
 
@@ -7,7 +7,7 @@ namespace SampleRoleAddon.Gamemodes.BombTag;
 // The standard one does everything you need it to and will handle things just fine.
 // However, you can rewrite the code if you want more control over which role actions run when.
 // It's pretty much just up to whether or not you feel like taking the time to do that.
-public class BombTagRoleOperations: StandardRoleOperations
+public class BombTagRoleOperations: NormalStandardRoleOperations
 {
     public BombTagRoleOperations(GameMode parentGamemode): base(parentGamemode)
     {
