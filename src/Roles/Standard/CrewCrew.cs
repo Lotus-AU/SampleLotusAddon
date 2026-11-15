@@ -4,7 +4,6 @@ using Lotus.GUI.Name;
 using Lotus.Roles;
 using Lotus.Roles.Internals.Attributes;
 using Lotus.Roles.RoleGroups.Vanilla;
-using Lotus.Utilities;
 using Lotus.Victory.Conditions;
 using UnityEngine;
 using Lotus.Roles.Internals.Enums;
@@ -12,11 +11,10 @@ using VentLib.Localization.Attributes;
 using VentLib.Options.UI;
 using Lotus.API.Odyssey;
 using Lotus.Chat;
-using System;
 using Lotus.Roles.Internals;
 using VentLib.Utilities.Optionals;
 
-namespace SampleRoleAddon.Roles.Standard;
+namespace SampleLotusAddon.Roles.Standard;
 
 // The "Crew Crew" is a Crewmate role that does something.
 // If "Crew Crew" successfully reports enough players (determined by host) they win the game! It's that simple
@@ -85,7 +83,7 @@ public class CrewCrew: Crewmate // There are a couple built-in role types you ca
     // By default, it will be blank.
     // You can either have a RoleImage (PNG File) or a Role Outfit (YAML File).
     // Check Lotus github to see how outfits work.
-    protected override string ForceRoleImageDirectory() => "SampleRoleAddon.assets.crewcrew.png";
+    protected override string ForceRoleImageDirectory() => "SampleLotusAddon.assets.crewcrew.png";
 
     private bool CheckWinCondition() => grabbedPlayers.Count >= reportedPlayersBeforeWin;
 

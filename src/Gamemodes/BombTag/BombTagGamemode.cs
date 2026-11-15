@@ -7,14 +7,14 @@ using Lotus.API.Reactive.HookEvents;
 using Lotus.GameModes;
 using Lotus.Roles;
 using Lotus.Victory;
+using SampleLotusAddon.Gamemodes.BombTag.Options;
+using SampleLotusAddon.Gamemodes.BombTag.WinCons;
 using VentLib.Logging;
 using VentLib.Options.UI.Tabs;
 using VentLib.Utilities.Extensions;
-using SampleRoleAddon.Gamemodes.BombTag.Options;
-using SampleRoleAddon.Gamemodes.BombTag.WinCons;
 using RoleHolder = Lotus.GUI.Name.Holders.RoleHolder;
 
-namespace SampleRoleAddon.Gamemodes.BombTag;
+namespace SampleLotusAddon.Gamemodes.BombTag;
 
 // Gamemodes are a LOT more complicated than just roles, so it easy to mess up here.
 public class BombTagGamemode: GameMode

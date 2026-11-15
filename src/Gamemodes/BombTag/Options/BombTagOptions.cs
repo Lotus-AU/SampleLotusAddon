@@ -3,7 +3,7 @@ using Lotus.Extensions;
 using UnityEngine;
 using VentLib.Options.UI;
 
-namespace SampleRoleAddon.Gamemodes.BombTag.Options;
+namespace SampleLotusAddon.Gamemodes.BombTag.Options;
 
 // This class stores and creates the options for the Bomb Tag Gamemode.
 // These won't save after closing the game as we don't use an OptionManager.

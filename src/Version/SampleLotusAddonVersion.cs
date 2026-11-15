@@ -1,6 +1,6 @@
 using Hazel;
 
-namespace SampleRoleAddon.Version;
+namespace SampleLotusAddon.Version;
 
 
 /// <summary>
@@ -19,8 +19,8 @@ public class SampleLotusAddonVersion: VentLib.Version.Version
 
     public override string ToSimpleName()
     {
-        return "Sample Lotus Addon Version v1.2.3";
+        return SampleAddon.AddonName;
     }
 
-    public override string ToString() => "SampleLotusAddonVersion";
+    public override string ToString() => SampleAddon.AddonVersion;
 }

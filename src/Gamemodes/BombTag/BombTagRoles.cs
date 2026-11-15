@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Lotus.GameModes;
 using Lotus.Roles;
-using SampleRoleAddon.Roles.BombTag;
+using SampleLotusAddon.Roles.BombTag;
 
-namespace SampleRoleAddon.Gamemodes.BombTag;
+namespace SampleLotusAddon.Gamemodes.BombTag;
 
 // A RoleHolder holds role instances for your gamemode.
 // Just add them all to a list, or you can separate them like how Standard Gamemode does.

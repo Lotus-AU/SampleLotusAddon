@@ -1,7 +1,7 @@
 using Lotus.GameModes;
 using Lotus.GameModes.Normal.Standard;
 
-namespace SampleRoleAddon.Gamemodes.BombTag;
+namespace SampleLotusAddon.Gamemodes.BombTag;
 
 // Role Operations are very complicated, so I recommend just making a subclass of the Standard one.
 // The standard one does everything you need it to and will handle things just fine.

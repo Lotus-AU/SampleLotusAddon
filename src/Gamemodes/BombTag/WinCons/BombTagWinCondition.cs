@@ -3,9 +3,9 @@ using System.Linq;
 using Lotus.API.Player;
 using Lotus.Extensions;
 using Lotus.Victory.Conditions;
-using SampleRoleAddon.Roles.BombTag;
+using SampleLotusAddon.Roles.BombTag;
 
-namespace SampleRoleAddon.Gamemodes.BombTag.WinCons;
+namespace SampleLotusAddon.Gamemodes.BombTag.WinCons;
 
 public class BombTagWinCondition: IWinCondition
 {

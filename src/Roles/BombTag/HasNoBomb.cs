@@ -1,17 +1,17 @@
-using Lotus.Roles.RoleGroups.NeutralKilling;
+using AmongUs.GameOptions;
+using Lotus.GUI;
+using Lotus.GUI.Name;
+using Lotus.Roles;
+using Lotus.Roles.Internals;
 using Lotus.Roles.Internals.Attributes;
 using Lotus.Roles.Internals.Enums;
-using Lotus.Roles.Internals;
-using AmongUs.GameOptions;
-using Lotus.Roles;
-using SampleRoleAddon.Gamemodes.BombTag.Options;
+using Lotus.Roles.RoleGroups.NeutralKilling;
+using SampleLotusAddon.Gamemodes.BombTag.Options;
 using UnityEngine;
-using Lotus.GUI;
 using VentLib.Localization.Attributes;
 using VentLib.Utilities;
-using Lotus.GUI.Name;
 
-namespace SampleRoleAddon.Roles.BombTag;
+namespace SampleLotusAddon.Roles.BombTag;
 
 // We use neutral killing base since the game auto desyncs them from other players because their team is Neutral.
 [Localized($"Roles.{nameof(HasNoBomb)}")]

@@ -10,7 +10,7 @@ using VentLib.Utilities.Collections;
 using VentLib.Utilities.Extensions;
 
 
-namespace SampleRoleAddon.Gamemodes.BombTag;
+namespace SampleLotusAddon.Gamemodes.BombTag;
 
 // This is just a copy of the StandardRoleManager file.
 // I edited the RoleHolder to use the BombTagRoles instead.

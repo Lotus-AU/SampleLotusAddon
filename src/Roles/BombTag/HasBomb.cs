@@ -1,28 +1,28 @@
-using Lotus.Roles.RoleGroups.NeutralKilling;
-using SampleRoleAddon.Gamemodes.BombTag;
+using System.Collections.Generic;
+using System.Linq;
+using AmongUs.GameOptions;
+using Lotus.API.Odyssey;
+using Lotus.API.Player;
+using Lotus.Extensions;
+using Lotus.GUI;
+using Lotus.GUI.Name;
+using Lotus.GUI.Name.Components;
+using Lotus.GUI.Name.Holders;
+using Lotus.Roles;
+using Lotus.Roles.Interactions;
+using Lotus.Roles.Internals;
 using Lotus.Roles.Internals.Attributes;
 using Lotus.Roles.Internals.Enums;
-using Lotus.Roles.Internals;
-using AmongUs.GameOptions;
-using Lotus.Extensions;
-using Lotus.Roles;
-using SampleRoleAddon.Gamemodes.BombTag.Options;
-using Lotus.GUI.Name.Components;
-using Lotus.GUI.Name;
+using Lotus.Roles.RoleGroups.NeutralKilling;
+using SampleLotusAddon.Gamemodes.BombTag;
+using SampleLotusAddon.Gamemodes.BombTag.Options;
 using UnityEngine;
-using Lotus.API.Odyssey;
-using Lotus.GUI.Name.Holders;
-using Lotus.GUI;
-using VentLib.Utilities;
 using VentLib.Localization.Attributes;
-using Lotus.Roles.Interactions;
-using System.Collections.Generic;
-using Lotus.API.Player;
-using System.Linq;
-using VentLib.Utilities.Extensions;
 using VentLib.Logging;
+using VentLib.Utilities;
+using VentLib.Utilities.Extensions;
 
-namespace SampleRoleAddon.Roles.BombTag;
+namespace SampleLotusAddon.Roles.BombTag;
 
 // We use neutral killing base since the game auto desyncs them from other players because their team is Neutral.
 [Localized($"Roles.{nameof(HasBomb)}")]

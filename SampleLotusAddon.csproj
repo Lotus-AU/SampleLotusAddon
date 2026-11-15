@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <Version>1.2.5</Version>
+        <Version>1.0.0</Version>
         <TargetFramework>net6.0</TargetFramework>
         <LangVersion>17.0</LangVersion>
         <langVersion>latest</langVersion>
         <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
         <GenerateAssemblyInformationalVersionAttribute>false</GenerateAssemblyInformationalVersionAttribute>
-        <RootNamespace>SampleRoleAddon</RootNamespace>
+        <RootNamespace>SampleLotusAddon</RootNamespace>
     </PropertyGroup>
     
     <PropertyGroup>
